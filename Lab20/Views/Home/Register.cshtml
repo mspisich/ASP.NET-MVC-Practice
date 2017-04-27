@@ -7,31 +7,52 @@
 <form name="Reg" action="success" method="get" onsubmit="return ValidateForm()">
     <p>First Name:</p>
 
-    <input type="text" id="First" name="FirstName" />
+    <input type="text" id="First" name="FirstName" required/>
+
+    <p>Last Name:</p>
+
+    <input type="text" id="Last" name="LastName" required/>
 
     <p>Email:</p>
 
-    <input type="text" id="Email" name="Email" />
+    <input type="text" id="Email" name="Email" required/>
+
+    <p>Phone Number:</p>
+
+    <input type="text" id="Phone" name="Phone"/>
+
+    <fieldset id="PasswordInput">
+        <p>Password:</p>
+
+        <input type="text" id="Password" name="Password" required />
+
+        <p>Confirm Password:</p>
+
+        <input type="text" id="PasswordConfirm" name="PasswordConfirm" required />
+    </fieldset>
+
+    <p>Sign up for our newsletter?</p>
+
+    <fieldset id="NewsletterSignup">
+        <input type="radio" id="Newsletter" name="Newsletter" value="Yes" checked />Yes
+        <input type="radio" id="Newsletter" name="Newsletter" value="No" />No<br />
+    </fieldset>
 
     <input type="submit" name="submit" value="Submit">
 </form>
 
 <script>
     function ValidateForm() {
-        //var fName = document.forms["Reg"]["FirstName"].Value;
-        var fName = $("#First").val();
         var email = $("#Email").val();
-        if (fName === "" && email === "") {
-            alert("Name and email must be filled out.");
-            return false;
+        var pass = $("#Password").val();
+        var passConfirm = $("#PasswordConfirm").val();
+
+        if (pass !== passComfirm) {
+            alert("Passwords do not match.");
         }
-        else if (fName === "") {
-            alert("Name must be filled out.");
-            return false;
-        }
-        else if (email === "") {
-            alert("Email must be filled out.");
-            return false;
+
+        if (email.indexOf('\@') !== 1) {
+            alert("Invalid email address.");
         }
     }
 </script>
